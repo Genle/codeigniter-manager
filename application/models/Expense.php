@@ -268,20 +268,37 @@ class Expense extends CI_Model
         {
             foreach ($dates as $date)
             {
-                $newDate = $date[0]->date;
-                $product = $this->db->select("description, price")
-                    ->from($this->product_table)
-                    ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
-                    ->get()
-                    ->result();
+                if(count($date) == 1 ){
+                    $newDate = $date[0]->date;
+                    $product = $this->db->select("description, price")
+                        ->from($this->product_table)
+                        ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
+                        ->get()
+                        ->result();
 
-                if(is_array($product) && count($product) > 0)
-                    array_push($expenses_array, array($place, $date, $product));//array{place, date, array_of_product}
+                    if(is_array($product) && count($product) > 0)
+                        array_push($expenses_array, array($place, $date, $product));//array{place, date, array_of_product}
+                }
+                else if(count($date) > 1)
+                {
+                    for($i =0 ; $i<count($date); $i++)
+                    {
+                        $newDate = $date[$i]->date;
+                        $product = $this->db->select("description, price")
+                            ->from($this->product_table)
+                            ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
+                            ->get()
+                            ->result();
+
+                        if(is_array($product) && count($product) > 0)
+                            array_push($expenses_array, array($place, $date, $product));//array{place, date, array_of_product}
+                    }
+                }
+
 
             }
 
         }
-
 
 
        if(!empty($expenses_array) && count($expenses_array) > 0)

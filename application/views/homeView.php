@@ -33,7 +33,7 @@
                                     <td><label for="product">Product(s)</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="checkbox" class="form-inline"> <label for="checkbox" style="font-weight: inherit; font-size: 14px;">Is it an expense from different date?</label></td>
+                                    <td><input id="checkbox-same-date" type="checkbox" class="form-inline"> <label for="checkbox" style="font-weight: inherit; font-size: 14px;">Is it an expense from different date?</label></td>
                                 </tr>
                                     <tr>
                                         <td>
@@ -57,7 +57,7 @@
             <h3 class="table-header-homeview">Last expenses</h3>
 
 
-            <?php if(isset($expense_limit) && !empty($expense_limit)): ?>
+            <?php if(isset($expenses_limit) && !empty($expenses_limit) ): ?>
                 <?php foreach ($expenses_limit as $expense): ?>
                     <div class="row expense-subtable-homeview">
                         <div class="col-lg-8 expense-table-homeview">

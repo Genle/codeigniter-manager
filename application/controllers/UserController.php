@@ -18,7 +18,7 @@ class UserController extends CI_Controller
         $this->load->helper(array('form','url', 'assets', 'security'));
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->output->enable_profiler(true);
+//        $this->output->enable_profiler(true);
 
 
     }

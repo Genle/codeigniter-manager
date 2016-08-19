@@ -120,7 +120,7 @@ li a{
 
 .table-header-homeview{
     margin-top:20px;
-    margin-left:10px;
+    margin-left:15px;
     font-size: 18px;
 }
 
@@ -142,6 +142,7 @@ tr.expenses-number:nth-child(even){
 
 .expense-subtable-homeview{
     width:400px;
+    margin-left: 1px;
     float: left;
 }
 

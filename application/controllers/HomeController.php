@@ -29,7 +29,7 @@ class HomeController extends CI_Controller
     {
         $data['title'] = 'Home';
         $data['id'] = 'home';
-        $data['expenses_limit'] =$this->Expense->buildExpenseArray(5);
+        $data['expenses_limit'] = $this->Expense->buildExpenseArray(5);
         $this->load->view('homeView', $data);
 
     }
