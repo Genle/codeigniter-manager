@@ -3,10 +3,10 @@
 /**
  * Created by PhpStorm.
  * User: shadowx
- * Date: 8/12/16
- * Time: 11:34 PM
+ * Date: 23-Aug-16
+ * Time: 3:10 PM
  */
-class HomeController extends CI_Controller
+class AboutController extends CI_Controller
 {
     public function __construct()
     {
@@ -14,25 +14,20 @@ class HomeController extends CI_Controller
         $this->load->database();
         $this->load->model('Expense');
         $this->load->helper(array('form','url', 'assets', 'security'));
-        $this->load->library('form_validation');
         $this->load->library('session');
-
 
     }
 
     public function index()
     {
-        $this->showHomepage();
+        $this->showAbout();
     }
 
-    public function showHomepage()
+    public function showAbout()
     {
-        $data['title'] = 'Home';
-        $data['id'] = 'home';
-        $data['expenses_limit'] = $this->Expense->buildExpenseArray(5);
-        $this->load->view('homeView', $data);
-
+        $data['title'] = 'About';
+        $data['id'] = 'about';
+        $this->load->view('aboutView', $data);
     }
-
 
 }

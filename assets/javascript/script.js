@@ -4,7 +4,6 @@
 
 $(function(){
     $("#home a:contains('Home')").parent().addClass("active");
-    $("#new-expense a:contains('New expense')").parent().addClass("active");
     $("#expenses a:contains('Expenses')").parent().addClass("active");
     $("#search a:contains('Search')").parent().addClass("active");
     $("#statistics a:contains('Statistics')").parent().addClass("active");

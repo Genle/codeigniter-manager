@@ -58,7 +58,7 @@
 
 
             <?php if(isset($expenses_limit) && !empty($expenses_limit) ): ?>
-                <?php $i=0;?>
+
                 <?php foreach ($expenses_limit as $expense): ?>
                     <div class="row expense-subtable-homeview">
                         <div class="col-lg-8 expense-table-homeview">
@@ -96,7 +96,7 @@
                                    </tr>
                                 <?php endforeach;?>
 
-<!--                                --><?php // $i++; if($i == 3) echo '<br>'; ?>
+
                             </table>
 
                         </div>

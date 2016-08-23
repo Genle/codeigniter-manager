@@ -3,10 +3,10 @@
 /**
  * Created by PhpStorm.
  * User: shadowx
- * Date: 8/12/16
- * Time: 11:34 PM
+ * Date: 23-Aug-16
+ * Time: 3:02 PM
  */
-class HomeController extends CI_Controller
+class SearchController extends CI_Controller
 {
     public function __construct()
     {
@@ -17,22 +17,19 @@ class HomeController extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('session');
 
-
     }
 
     public function index()
     {
-        $this->showHomepage();
+        $this->showSearch();
     }
 
-    public function showHomepage()
+    public function showSearch()
     {
-        $data['title'] = 'Home';
-        $data['id'] = 'home';
-        $data['expenses_limit'] = $this->Expense->buildExpenseArray(5);
-        $this->load->view('homeView', $data);
-
+        $data['title'] = 'Search-expense';
+        $data['id'] = 'search';
+//        $data['expenses_limit'] = $this->Expense->buildExpenseArray(5);
+        $this->load->view('searchView', $data);
     }
-
 
 }

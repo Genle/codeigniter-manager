@@ -9,11 +9,11 @@
         <div class=" navbar ">
             <ul class="nav navbar-nav">
                 <li class="divider-vertical"></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Expenses</a></li>
-                <li><a href="#">Search</a></li>
+                <li><a href="<?php echo base_url('index.php/HomeController')?>">Home</a></li>
+                <li><a href="<?php echo base_url('index.php/ListExpensesController')?>">Expenses</a></li>
+                <li><a href="<?php echo base_url('index.php/SearchController')?>">Search</a></li>
                 <li><a href="#">Statistics</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="<?php echo base_url('index.php/AboutController')?>">About</a></li>
 
             </ul>
             <ul class=" nav navbar-nav navbar-right">
