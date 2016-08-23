@@ -159,16 +159,19 @@ class Expense extends CI_Model
     public function addNewExpense($description, $price,$id, $date)
     {
 
+
         if(!is_string($description) OR !is_numeric($price) OR !is_string($id)  OR empty($date) OR empty($id) OR empty($description) OR empty($price) )
             return false;
 
         $new_date = $this->validateDate($date);
+
         if($new_date == false)
             return false;
 
 
-        return $this->db->set(array('description'=> $description, 'price'=>$price, 'date'=>$new_date, 'idExpense'=> $id))
-                ->insert($this->product_table);
+       return  $this->db->set(array('description'=> $description, 'price'=>$price, 'date'=>$new_date, 'idExpense'=> $id))
+                ->insert($this->product_table) ;
+
 
 
 
@@ -204,11 +207,12 @@ class Expense extends CI_Model
      */
     public function validateDate($date)
     {
+
         $datePart = explode("-", $date);
         if(count($datePart) == 3 )
         {
             $year = date("y");
-            if($datePart[0] > 0 && $datePart[0]< 32 && $datePart[1] > 0 && $datePart[1] < 13 && $datePart[2] > 0 && $datePart[2] <= $year )
+            if(intval($datePart[0]) > 0 && intval($datePart[0]) < 32 && intval($datePart[1] ) > 0 && intval($datePart[1] ) < 13 && intval($datePart[2]) > 0 && intval($datePart[2]) <= $year )
                 return $datePart[2]."-".$datePart[1]."-".$datePart[0];
             else
                 return false;
@@ -259,6 +263,7 @@ class Expense extends CI_Model
         $places = $this->getPlaces($number);
         $dates = $this->getDifferentDate($places);
 
+
         if(empty($places) OR empty($dates) OR count($places) == 0 OR count($dates) == 0)
             return false;
 
@@ -269,7 +274,9 @@ class Expense extends CI_Model
             foreach ($dates as $date)
             {
                 if(count($date) == 1 ){
+
                     $newDate = $date[0]->date;
+
                     $product = $this->db->select("description, price")
                         ->from($this->product_table)
                         ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
@@ -281,9 +288,11 @@ class Expense extends CI_Model
                 }
                 else if(count($date) > 1)
                 {
+
                     for($i =0 ; $i<count($date); $i++)
                     {
                         $newDate = $date[$i]->date;
+
                         $product = $this->db->select("description, price")
                             ->from($this->product_table)
                             ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
@@ -291,7 +300,7 @@ class Expense extends CI_Model
                             ->result();
 
                         if(is_array($product) && count($product) > 0)
-                            array_push($expenses_array, array($place, $date, $product));//array{place, date, array_of_product}
+                            array_push($expenses_array, array($place, $newDate, $product));//array{place, date, array_of_product}
                     }
                 }
 

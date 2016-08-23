@@ -42,6 +42,7 @@ class ExpenseController extends CI_Controller
                 $date = $this->input->post('date')[$i];
                 $date_n = strtotime($date);
                 $result = $this->Expense->addNewExpense($description, floatval($price),$id, date('d-m-y',$date_n));
+                var_dump($result);
 
                 if(!$result){
                     $data['message'] = "One of this insert wasnt done successfully";

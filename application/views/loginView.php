@@ -41,7 +41,7 @@
                 <form action="<?php echo base_url('index.php/UserController/userLoginProcess') ?>" method="POST" role="form">
                     <div class="form-group">
                         <label for="username" class="control-label">Username: </label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter username">
+                        <input type="text" class="form-control" name="username" placeholder="Enter username" autocomplete="off">
 
                     </div>
                     <div class="form-group">

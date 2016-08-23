@@ -151,6 +151,11 @@ tr.expenses-number:nth-child(even){
     font-size: 14px;
 }
 
+.icon-money , .icon-description{
+    width: 20px;
+    height: 20px;
+}
+
 
 
 

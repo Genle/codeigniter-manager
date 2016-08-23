@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <fieldset style="border: 1px solid black; ">
                         <legend style=" border-style: none; width: 15%; margin-left:3%;">Add new expense</legend>
-                        <form action="#" name="new-expense" id="add-new-expense" role="form" method="post">
+                        <form   name="new-expense" id="add-new-expense" role="form" method="post">
                             <table class="table table-responsive table-input " id="dynamic_field" style="margin-left: 5px;">
                                 <tr>
                                     <td><label for="place">Place:</label></td>
@@ -33,7 +33,7 @@
                                     <td><label for="product">Product(s)</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input id="checkbox-same-date" type="checkbox" class="form-inline"> <label for="checkbox" style="font-weight: inherit; font-size: 14px;">Is it an expense from different date?</label></td>
+                                    <td><input name="checkbox" id="checkbox-same-date" type="checkbox" class="form-inline"> <label for="checkbox" style="font-weight: inherit; font-size: 14px;">Is it an expense from different date?</label></td>
                                 </tr>
                                     <tr>
                                         <td>
@@ -58,22 +58,45 @@
 
 
             <?php if(isset($expenses_limit) && !empty($expenses_limit) ): ?>
+                <?php $i=0;?>
                 <?php foreach ($expenses_limit as $expense): ?>
                     <div class="row expense-subtable-homeview">
                         <div class="col-lg-8 expense-table-homeview">
                             <h4 class="place header-table"><?php echo "Buying place: ".$expense[0]->place ?></h4>
-                            <h4 class="date header-table"><?php echo "Date: ". $expense[1][0]->date ?></h4>
-                            <table class="table table-bordered">
+                            <h4 class="date header-table">
+                                <?php
+                                    if (is_array($expense[1] )) {
+                                        echo "Date: ". $expense[1][0]->date;
+                                    }
+                                    else {
+                                        echo "Date: ". $expense[1];
+                                    }
+                                ?>
+                            </h4>
+                            <table  class="table table-bordered">
                                 <tr class="expenses-number">
-                                    <th>Description</th>
-                                    <th>Price</th>
+                                    <th>
+                                        <img class="icon-description" src="<?php echo img_url('descriptionIcon.png') ?>" alt="">
+                                        Description
+                                    </th>
+                                    <th>
+                                        <img class="fa-money icon-money" src="<?php echo img_url('moneyIcon.png') ?>" alt="">
+                                        Price
+                                    </th>
                                 </tr>
                                 <?php foreach ($expense[2] as $product): ?>
                                    <tr class="expenses-number">
-                                       <td><?php echo $product->description ?></td>
-                                       <td><?php echo $product->price ?></td>
+                                       <td>
+                                           <?php echo $product->description ?>
+                                       </td>
+                                       <td>
+
+                                           <?php echo $product->price ?>
+                                       </td>
                                    </tr>
                                 <?php endforeach;?>
+
+<!--                                --><?php // $i++; if($i == 3) echo '<br>'; ?>
                             </table>
 
                         </div>

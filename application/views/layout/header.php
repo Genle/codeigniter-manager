@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo css_url('style')?>">
     <script src="<?php echo js_url('jquery-3.1.0.min')?>"></script>
     <script src="<?php echo js_url('bootstrap.min')?>"></script>
-    <script src="<?php echo js_url('script')?>"></script>
+    <script src="<?php echo  js_url('script')?>"></script>
 
 
 
