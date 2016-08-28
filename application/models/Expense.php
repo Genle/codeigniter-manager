@@ -50,21 +50,59 @@ class Expense extends CI_Model
     public function getAllExpenses()
     {
         $places = $this->getAllPlaces();
-        $number = count($places);
-        $products = array();
-        for ($i = 0; $i<$number; $i++)
-        {
-            $product = $this->db->select('*')
-                ->from($this->product_table)
-                ->where("$places[$i].id = $this->product_table.idExpense")
-                ->order_by("$this->product_table.id", 'DESC')
-                ->get()
-                ->result();
+        $dates = $this->getDifferentDate($places);
 
-            array_push($products, $product);
+
+        if(empty($places) OR empty($dates) OR count($places) == 0 OR count($dates) == 0)
+            return false;
+
+        $expenses_array = array();
+
+        foreach ($places as $place)
+        {
+            foreach ($dates as $date)
+            {
+                if(count($date) == 1 ){
+
+                    $newDate = $date[0]->date;
+
+                    $product = $this->db->select("description, price")
+                        ->from($this->product_table)
+                        ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
+                        ->get()
+                        ->result();
+
+                    if(is_array($product) && count($product) > 0)
+                        array_push($expenses_array, array($place, $date, $product));//array{place, date, array_of_product}
+                }
+                else if(count($date) > 1)
+                {
+
+                    for($i =0 ; $i<count($date); $i++)
+                    {
+                        $newDate = $date[$i]->date;
+
+                        $product = $this->db->select("description, price")
+                            ->from($this->product_table)
+                            ->where("$this->product_table.idExpense = '$place->id' AND  $this->product_table.date = '$newDate'  ")
+                            ->get()
+                            ->result();
+
+                        if(is_array($product) && count($product) > 0)
+                            array_push($expenses_array, array($place, $newDate, $product));//array{place, date, array_of_product}
+                    }
+                }
+
+
+            }
+
         }
 
-        return $products;
+
+        if(!empty($expenses_array) && count($expenses_array) > 0)
+            return $expenses_array;
+        else
+            return false;
 
     }
 
@@ -75,7 +113,7 @@ class Expense extends CI_Model
 
     public function getAllPlaces()
     {
-        $places = $this->db->select('id','place')
+        $places = $this->db->select('id,place')
             ->from($this->expense_table)
             ->order_by("$this->expense_table.id", 'DESC')
             ->get()

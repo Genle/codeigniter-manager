@@ -5,13 +5,16 @@ $this->load->view('layout/nav');
 ?>
 
 
-<div class="container">
+<div class="container-fluid">
     <div class="row ">
-        <div class="col-md-4"></div>
-        <h2>About</h2>
-        <p style="wid">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aliquid, aperiam commodi consequuntur doloremque dolorum excepturi expedita inventore ipsum obcaecati odio quia, quibusdam repellat sapiente sint vel voluptate.
-        </p>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>About</h2>
+            <p>
+               This web application is a personal project. A personal project created because i wanted to have a tool to process my
+                expenses and deal with the flow of my months income. This application let you record every expense you do from different
+                places, time.
+            </p>
+            </div>
     </div>
 </div>
 

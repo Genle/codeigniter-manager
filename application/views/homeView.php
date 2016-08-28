@@ -3,7 +3,7 @@
     $this->load->view('layout/header', $data);
     $this->load->view('layout/nav');
 ?>
-    <div class="container-fluid new-expense-form">
+    <div class="container-fluid new-expense-form" ng-app="app">
         <?php if(isset($message) && stristr($message, 'successfull') == TRUE ):?>
 
             <div class="row">
@@ -16,11 +16,15 @@
                 <h4 style="color: red"><?php echo $message ?></h4>
             </div>
         <?php endif; ?>
-        <section class="row"><!-- Add new expense form-->
-            <div class="col-md-12">
+<!--        <h2 class="title-space">-->
+<!--            HELLO WORLD-->
+<!--        </h2>-->
+
+        <section class="row section-input"><!-- Add new expense form-->
+            <div class="col-md-8">
                 <div class="form-group">
-                    <fieldset style="border: 1px solid black; ">
-                        <legend style=" border-style: none; width: 15%; margin-left:3%;">Add new expense</legend>
+                    <fieldset style="border: 1px solid black; padding-right: 10px;">
+                        <legend style="font-size: 16px; border-style: none; width: 15%; margin-left:3%;">Add new expense</legend>
                         <form   name="new-expense" id="add-new-expense" role="form" method="post">
                             <table class="table table-responsive table-input " id="dynamic_field" style="margin-left: 5px;">
                                 <tr>
@@ -51,6 +55,40 @@
 
                 </div>
             </div>
+            <div style=" height: 340px;" class="col-md-4" ng-controller="currencyController"><!--currency data api -->
+                <fieldset style="border: 1px solid black; padding-right: 10px; height: 339px; ">
+                    <legend style="color: black;font-size: 16px; border-style: none; width: 25%;  margin-left:3%;">Currency rate</legend>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <table style="position: relative; top: 50px;" class="table table-bordered currency-table">
+                                <tr class="btn-info">
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Value</th>
+                                </tr>
+                                <tr>
+                                    <td>USD</td>
+                                    <td>EUR</td>
+                                    <td> {{currency.quotes.USDEUR}}</td>
+                                </tr>
+                                <tr>
+                                    <td>USD</td>
+                                    <td>HTG</td>
+                                    <td>{{currency.quotes.USDHTG}}</td>
+                                </tr>
+                                <tr>
+                                    <td>USD</td>
+                                    <td>DOP</td>
+                                    <td> {{currency.quotes.USDDOP}}</td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+            </div><!--currency data api -->
         </section><!-- Add new expense form-->
 
         <section class="row">

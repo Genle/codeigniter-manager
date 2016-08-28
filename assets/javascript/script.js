@@ -47,7 +47,7 @@ $(document).ready(function () {
             dataType:'text',
             data:$('#add-new-expense').serialize(),
             success:function (data) {
-                alert(data);
+                // alert(data);
 
 
             }

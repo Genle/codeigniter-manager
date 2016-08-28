@@ -27,7 +27,7 @@ class ListExpensesController extends CI_Controller
     {
         $data['title'] = 'Expenses';
         $data['id'] = 'expenses';
-//        $data['expenses_limit'] = $this->Expense->buildExpenseArray(5);
+        $data['expenses_limit'] = $this->Expense->getAllExpenses();
         $this->load->view('expensesView', $data);
     }
 

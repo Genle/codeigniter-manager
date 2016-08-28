@@ -9,6 +9,8 @@
     <script src="<?php echo js_url('jquery-3.1.0.min')?>"></script>
     <script src="<?php echo js_url('bootstrap.min')?>"></script>
     <script src="<?php echo  js_url('script')?>"></script>
+    <script src="<?php echo  js_url('angular.min')?>"></script>
+    <script src="<?php echo  js_url('app')?>"></script>
 
 
 

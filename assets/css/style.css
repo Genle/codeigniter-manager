@@ -2,6 +2,10 @@ html,body{
     height: 100%;
 }
 
+.container-fluid{
+    min-height: 100%;
+}
+
 .login-container{
     background: url("../img/login-bg2.png");
     background-size: 99.9%;
@@ -154,6 +158,11 @@ tr.expenses-number:nth-child(even){
 .icon-money , .icon-description{
     width: 20px;
     height: 20px;
+}
+
+
+.section-input{
+    margin-top: 100px;
 }
 
 
