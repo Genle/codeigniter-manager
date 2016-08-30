@@ -74,12 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=sql9.freesqldatabase.com;port=3306;dbname=sql9133535; charset=utf8;',
-	'hostname' => 'sql9.freesqldatabase.com',
+	'dsn'	=> 'mysql:host=sql9.freesqldatabase.com:3306;dbname=sql9133535; charset=utf8;',
+	'hostname' => 'sql9.freesqldatabase.com:3306',
 	'username' => 'sql9133535',
-	'password' => ' 6Snm45A81Z',
+	'password' => '6Snm45A81Z',
 	'database' => 'sql9133535',
-	'port'	   => '3306',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
